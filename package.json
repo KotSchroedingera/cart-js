@@ -11,5 +11,8 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "pug": "^3.0.2"
+  },
+  "dependencies": {
+    "gulp-pug": "^5.0.0"
   }
 }
