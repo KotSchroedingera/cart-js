@@ -1,57 +1,74 @@
-const { src, dest, watch, series } = require('gulp');
+import pkg from 'gulp';
+const { src, dest, watch, series, parallel } = pkg;
 
-const pug = require('gulp-pug');
+import pug from 'gulp-pug';
+import typograf from 'gulp-typograf';
 
-const sass = require('gulp-sass')(require('sass'));
-const cleanCSS = require('gulp-clean-css');
-const shorthand = require('gulp-shorthand');
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sass = gulpSass(dartSass);
+import shorthand from 'gulp-shorthand';
+import autoprefixer from 'gulp-autoprefixer';
+import cleanCSS from 'gulp-clean-css';
 
-const terser = require('gulp-terser');
-const babel = require('gulp-babel');
+import terser from 'gulp-terser';
+import babel from 'gulp-babel';
 
-const imagemin = require('gulp-imagemin');
+import imagemin from 'gulp-imagemin';
 
-const plumber = require('gulp-plumber');
-const del = require('del');
-const sync = require('browser-sync').create();
+import sourcemaps from 'gulp-sourcemaps';
+import plumber from 'gulp-plumber';
+import del from 'del';
+import sync from 'browser-sync';
+sync.create();
 
-
-function html() {
+export const html = () => {
   return src('./src/pages/**.pug')
     .pipe(plumber())
     .pipe(pug({ pretty: true }))
+    .pipe(typograf({ locale: ['ru', 'en-US'] }))
     .pipe(dest('./build'));
 }
 
-function css() {
+export const css = () => {
   return src('./src/styles/**.scss')
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(shorthand())
-    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(autoprefixer())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write('./maps'))
     .pipe(dest('./build/css'));
 }
 
-function js() {
+export const js = () => {
   return src('./src/scripts/**.js')
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(babel({  presets: ['@babel/preset-env'] }))
     .pipe(terser())
+    .pipe(sourcemaps.write('./maps'))
     .pipe(dest('./build/js'));
 }
 
-function images() {
+export const images = () => {
   return src('./src/images/**.*')
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(dest('./build/images'))
 }
 
-async function clear() {
-  await del(['./build']);
+export const fonts = () => {
+  return src('./src/fonts/**')
+    .pipe(dest('./build/fonts'));
 }
 
-function serve() {
+export const clear = async() => {
+  await del('./build');
+}
+
+const server = () => {
   sync.init({
     server: './build',
   });
@@ -59,15 +76,11 @@ function serve() {
   watch('./src/pages/**.pug', series(html)).on('change', sync.reload);
   watch('./src/styles/**.scss', series(css)).on('change', sync.reload);
   watch('./src/scripts/**.js', series(js)).on('change', sync.reload);
-  watch('./src/images/**.*', series(images)).on('change', sync.reload);
+  watch('./src/images/**', series(images)).on('change', sync.reload);
+  watch('./src/fonts/**', series(fonts)).on('change', sync.reload);
 }
 
-exports.html = html;
-exports.css = css;
-exports.js = js;
-exports.images = images;
-exports.clear = clear;
-exports.build = series(clear, css, html, js, images);
-exports.serve = series(clear, css, html, js, images, serve);
-
+export const build = series(clear, parallel(fonts, css, html, js, images));
+export const serve = series(clear, parallel(fonts, css, html, js, images), server);
+export default serve;
 

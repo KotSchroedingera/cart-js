@@ -1,7 +1,7 @@
 console.log('Hello!');
 
 const foo = (param) => {
-  alert(param);
+  console.log(param);
 }
 
 foo('alert!!!');
