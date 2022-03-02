@@ -9,10 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
-    "pug": "^3.0.2"
-  },
-  "dependencies": {
-    "gulp-pug": "^5.0.0"
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "pug": "^3.0.2",
+    "sass": "^1.49.9"
   }
 }
