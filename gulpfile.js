@@ -9,6 +9,8 @@ const shorthand = require('gulp-shorthand');
 const terser = require('gulp-terser');
 const babel = require('gulp-babel');
 
+const imagemin = require('gulp-imagemin');
+
 const plumber = require('gulp-plumber');
 const del = require('del');
 const sync = require('browser-sync').create();
@@ -38,6 +40,13 @@ function js() {
     .pipe(dest('./build/js'));
 }
 
+function images() {
+  return src('./src/images/**.*')
+    .pipe(plumber())
+    .pipe(imagemin())
+    .pipe(dest('./build/images'))
+}
+
 async function clear() {
   await del(['./build']);
 }
@@ -50,13 +59,15 @@ function serve() {
   watch('./src/pages/**.pug', series(html)).on('change', sync.reload);
   watch('./src/styles/**.scss', series(css)).on('change', sync.reload);
   watch('./src/scripts/**.js', series(js)).on('change', sync.reload);
+  watch('./src/images/**.*', series(images)).on('change', sync.reload);
 }
 
 exports.html = html;
 exports.css = css;
 exports.js = js;
+exports.images = images;
 exports.clear = clear;
-exports.build = series(clear, css, html, js);
-exports.serve = series(clear, css, html, js, serve);
+exports.build = series(clear, css, html, js, images);
+exports.serve = series(clear, css, html, js, images, serve);
 
 
