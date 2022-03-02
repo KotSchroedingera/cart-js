@@ -3,6 +3,7 @@ const { src, dest, watch, series, parallel } = pkg;
 
 import pug from 'gulp-pug';
 import typograf from 'gulp-typograf';
+import { htmlValidator } from 'gulp-w3c-html-validator';
 
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
@@ -27,6 +28,8 @@ export const html = () => {
     .pipe(plumber())
     .pipe(pug({ pretty: true }))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
+    .pipe(htmlValidator.analyzer())
+    .pipe(htmlValidator.reporter())
     .pipe(dest('./build'));
 }
 
@@ -61,6 +64,7 @@ export const images = () => {
 
 export const fonts = () => {
   return src('./src/fonts/**')
+    .pipe(plumber())
     .pipe(dest('./build/fonts'));
 }
 
@@ -83,4 +87,3 @@ const server = () => {
 export const build = series(clear, parallel(fonts, css, html, js, images));
 export const serve = series(clear, parallel(fonts, css, html, js, images), server);
 export default serve;
-
