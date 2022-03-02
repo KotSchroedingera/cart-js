@@ -26,7 +26,7 @@ sync.create();
 export const html = () => {
   return src('./src/pages/**.pug')
     .pipe(plumber())
-    .pipe(pug({ pretty: true }))
+    .pipe(pug({ pretty: false }))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
     .pipe(htmlValidator.analyzer())
     .pipe(htmlValidator.reporter())
