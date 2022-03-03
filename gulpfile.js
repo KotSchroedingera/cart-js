@@ -11,12 +11,15 @@ const sass = gulpSass(dartSass);
 import shorthand from 'gulp-shorthand';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
+import purgecss from 'gulp-purgecss';
+import stripCssComments from 'gulp-strip-css-comments';
 
 import terser from 'gulp-terser';
 import babel from 'gulp-babel';
 
 import imagemin from 'gulp-imagemin';
 
+import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
 import plumber from 'gulp-plumber';
 import del from 'del';
@@ -27,6 +30,7 @@ export const html = () => {
   return src('./src/pages/**.pug')
     .pipe(plumber())
     .pipe(pug({ pretty: true }))
+    .pipe(replace('.scss', '.css'))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
     .pipe(htmlValidator.analyzer())
     .pipe(htmlValidator.reporter())
@@ -38,11 +42,13 @@ export const css = () => {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
+    .pipe(stripCssComments({ preserve: false }))
+    .pipe(purgecss({ content: ['./src/**/*.pug'] }))
     .pipe(shorthand())
     .pipe(autoprefixer())
     .pipe(cleanCSS())
     .pipe(sourcemaps.write('./maps'))
-    .pipe(dest('./build/css'));
+    .pipe(dest('./build/styles'));
 }
 
 export const js = () => {
@@ -52,7 +58,7 @@ export const js = () => {
     .pipe(babel({  presets: ['@babel/preset-env'] }))
     .pipe(terser())
     .pipe(sourcemaps.write('./maps'))
-    .pipe(dest('./build/js'));
+    .pipe(dest('./build/scripts'));
 }
 
 export const images = () => {

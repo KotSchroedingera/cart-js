@@ -1,20 +1,10 @@
-extends ./common/layout.pug
-
-block header 
-  .header
-    .row 
-      form.form-search(action="#")
-        input.form-search__input(type="text" placeholder="Поиск по запросу")
-      .devices-buttons
-        button.devices-buttons__button.devices-buttons__button--active iPhone/iPod
-        button.devices-buttons__button iPad
-      .download-buttons
-        a.download-buttons__button.download-buttons__button--download Скачать .CSV
-        a.download-buttons__button.download-buttons__button--add-query Добавить запрос
-    .row
-      .message
-        span.message__first 45% в ТОП-3
-        span.message__text Вы недополучаете 450 инсталлов в день
-
-block table 
-  
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Abojur - Студия дизайнерского текстиля в Санкт-Петербурге
+        link(rel="stylesheet", href="../styles/main.scss")
+    body 
+        p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, nisi?
