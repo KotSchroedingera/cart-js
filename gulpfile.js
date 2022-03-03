@@ -26,7 +26,7 @@ sync.create();
 export const html = () => {
   return src('./src/pages/**.pug')
     .pipe(plumber())
-    .pipe(pug({ pretty: false }))
+    .pipe(pug({ pretty: true }))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
     .pipe(htmlValidator.analyzer())
     .pipe(htmlValidator.reporter())
@@ -34,7 +34,7 @@ export const html = () => {
 }
 
 export const css = () => {
-  return src('./src/styles/**.scss')
+  return src('./src/styles/main.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -77,13 +77,13 @@ const server = () => {
     server: './build',
   });
 
-  watch('./src/pages/**.pug', series(html)).on('change', sync.reload);
-  watch('./src/styles/**.scss', series(css)).on('change', sync.reload);
-  watch('./src/scripts/**.js', series(js)).on('change', sync.reload);
-  watch('./src/images/**', series(images)).on('change', sync.reload);
-  watch('./src/fonts/**', series(fonts)).on('change', sync.reload);
+  watch('./src/pages/**').on('all', series(html, sync.reload));
+  watch('./src/styles/**').on('all', series(css, sync.reload));
+  watch('./src/scripts/**').on('all', series(js, sync.reload));
+  watch('./src/images/**').on('all', series(images, sync.reload));
+  watch('./src/fonts/**').on('all', series(fonts, sync.reload));
 }
 
-export const build = series(clear, parallel(fonts, css, html, js, images));
-export const serve = series(clear, parallel(fonts, css, html, js, images), server);
+export const build = series(clear, fonts, images, css, html, js, );
+export const serve = series(clear, fonts, images, css, html, js, server);
 export default serve;
