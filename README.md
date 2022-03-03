@@ -1,6 +1,5 @@
-# Layout
+# Layout projects
 
-Layout-projects. 
 Core technologies: HTML, CSS, JavaScript. 
 
 ## Report table app
