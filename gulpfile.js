@@ -1,5 +1,5 @@
 import pkg from 'gulp';
-const { src, dest, watch, series, parallel } = pkg;
+const { src, dest, watch, series } = pkg;
 
 import pug from 'gulp-pug';
 import typograf from 'gulp-typograf';
