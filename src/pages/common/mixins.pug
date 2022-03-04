@@ -1,0 +1,12 @@
+mixin text-block(heading, ...text)
+  .text-block 
+    h2.text-block__heading= heading
+    if text
+      .text-block__text
+        each elem in text
+          p= elem
+
+mixin product-card(imgSrc, imgAlt)
+  .product-card
+    .product-card__image
+      img(src=imgSrc, alt=imgAlt)      

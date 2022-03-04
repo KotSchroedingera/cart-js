@@ -31,6 +31,7 @@ export const html = () => {
     .pipe(plumber())
     .pipe(pug({ pretty: true }))
     .pipe(replace('.scss', '.css'))
+    .pipe(replace('../../images/', './images/'))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
     .pipe(htmlValidator.analyzer())
     .pipe(htmlValidator.reporter())
@@ -55,14 +56,14 @@ export const js = () => {
   return src('./src/scripts/**.js')
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(babel({  presets: ['@babel/preset-env'] }))
+    .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(terser())
     .pipe(sourcemaps.write('./maps'))
     .pipe(dest('./build/scripts'));
 }
 
 export const images = () => {
-  return src('./src/images/**.*')
+  return src('./src/images/**')
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(dest('./build/images'))
@@ -90,6 +91,6 @@ const server = () => {
   watch('./src/fonts/**').on('all', series(fonts, sync.reload));
 }
 
-export const build = series(clear, fonts, images, css, html, js, );
-export const serve = series(clear, fonts, images, css, html, js, server);
+export const build = series(clear, html, css, js, fonts, images);
+export const serve = series(clear, html, css, js, fonts, images, server);
 export default serve;

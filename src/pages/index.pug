@@ -1,10 +1,18 @@
 doctype html
 html(lang="ru")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Abojur - Студия дизайнерского текстиля в Санкт-Петербурге
-        link(rel="stylesheet", href="../styles/main.scss")
-    body 
-        p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, nisi?
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Abojur - Студия дизайнерского текстиля в Санкт-Петербурге
+    link(rel="stylesheet", href="../styles/main.scss")
+  body 
+    include includes/header.pug 
+    include includes/slogan.pug
+    include includes/about.pug
+    include includes/best.pug
+    include includes/projects.pug
+    include includes/mission.pug
+    include includes/team.pug
+    include includes/collections.pug
+    include includes/talk.pug
