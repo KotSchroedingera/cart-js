@@ -30,8 +30,12 @@ export const html = () => {
   return src('./src/pages/**.pug')
     .pipe(plumber())
     .pipe(pug({ pretty: true }))
-    .pipe(replace('.scss', '.css'))
-    .pipe(replace('../../images/', './images/'))
+    .pipe(replace(
+      /(href="[^\s]+).scss/, 
+      '$1.css'))
+    .pipe(replace(
+      /(img src=")[{.|\/}]+([^\s]+")/, 
+      '$1./$2'))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
     .pipe(htmlValidator.analyzer())
     .pipe(htmlValidator.reporter())
