@@ -18,6 +18,7 @@ import terser from 'gulp-terser';
 import babel from 'gulp-babel';
 
 import imagemin from 'gulp-imagemin';
+import svgSprite from 'gulp-svg-sprite';
 
 import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
@@ -67,10 +68,22 @@ export const js = () => {
 }
 
 export const images = () => {
-  return src('./src/images/**')
+  return src('./src/images/**', '!./src/images/sprite')
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(dest('./build/images'))
+}
+
+export const svg = () => {
+  return src('./src/images/sprite')
+    .pipe(svgSprite({
+      mode: {
+          stack: {
+              sprite: "./sprite.svg"  //sprite file name
+          }
+      },
+    }))
+    .pipe(dest('./build/images/sprite'))
 }
 
 export const fonts = () => {
