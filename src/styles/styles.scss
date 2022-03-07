@@ -1,0 +1,11 @@
+// common 
+svg.img {
+  max-width: 100%;
+}
+
+.image-wrapper {
+  &__image {
+    display: block;
+    max-width: 100%;
+  }
+}

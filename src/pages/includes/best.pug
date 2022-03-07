@@ -1,0 +1,51 @@
+section.section.products 
+  .container
+    .row
+      .offset-md-1.col-md-4
+        +text-block('ДЛЯ ВАС ТОЛЬКО САМОЕ ЛУЧШЕЕ')
+    .row 
+      .col-md-4 
+        +product-card(
+          '../../images/products/casa-nova.jpg', 
+          'pillow-casa-nova',
+          'Подушки Casa Nova', 
+          'от 15 000 ₽',
+          'vertical'
+        )
+      .col-md-4 
+        +product-card(
+          '../../images/products/shanti.jpg',
+          'shanti',
+          'Покрывало ШАНТИ', 
+          'от 13 660 ₽', 
+          'vertical'
+        )
+      .col-md-4 
+        +product-card(
+          '../../images/products/elixir7.jpg',
+          'elixir-7', 
+          'Подушки Elixir №7',
+          'от 15 000 ₽', 
+          'vertical'
+        )
+    .row
+      .col-md-6
+        +product-card(
+          '../../images/products/basic.jpg', 
+          'pillow-basic', 
+          'Подушки Basic', 
+          'от 11 000 ₽', 
+          'horisontal'
+        )
+      .col-md-6
+        +product-card(
+          '../../images/products/vintage.jpg', 
+          'pillow-vintage', 
+          'Подушки Vintage', 
+          'от 17 000 ₽', 
+          'horisontal'
+        )
+
+
+
+

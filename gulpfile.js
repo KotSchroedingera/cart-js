@@ -19,6 +19,7 @@ import babel from 'gulp-babel';
 
 import imagemin from 'gulp-imagemin';
 import svgSprite from 'gulp-svg-sprite';
+import svgo from 'gulp-svgo';
 
 import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
@@ -37,9 +38,13 @@ export const html = () => {
     .pipe(replace(
       /(img src=")[{.|\/}]+([^\s]+")/, 
       '$1./$2'))
+    .pipe(replace(
+      /(src=")sprite(#[^\s]+")/, 
+      '$1./images/sprite/stack/sprite.svg$2'
+    ))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
-    .pipe(htmlValidator.analyzer())
-    .pipe(htmlValidator.reporter())
+    // .pipe(htmlValidator.analyzer())
+    // .pipe(htmlValidator.reporter())
     .pipe(dest('./build'));
 }
 
@@ -68,20 +73,22 @@ export const js = () => {
 }
 
 export const images = () => {
-  return src('./src/images/**', '!./src/images/sprite')
+  return src(['src/images/**', '!src/images/sprite/**'])
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(dest('./build/images'))
 }
 
-export const svg = () => {
-  return src('./src/images/sprite')
+export const sprite = () => {
+  return src('./src/images/sprite/*.svg')
+    .pipe(plumber())
+    .pipe(svgo())
     .pipe(svgSprite({
       mode: {
-          stack: {
-              sprite: "./sprite.svg"  //sprite file name
-          }
-      },
+        stack: {
+          sprite: 'sprite.svg'
+        }
+      }
     }))
     .pipe(dest('./build/images/sprite'))
 }
@@ -104,10 +111,11 @@ const server = () => {
   watch('./src/pages/**').on('all', series(html, sync.reload));
   watch('./src/styles/**').on('all', series(css, sync.reload));
   watch('./src/scripts/**').on('all', series(js, sync.reload));
-  watch('./src/images/**').on('all', series(images, sync.reload));
+  watch(['./src/images/**', '!src/images/sprite/**']).on('all', series(images, sync.reload));
+  watch('./src/images/sprite/**').on('all', series(sprite, sync.reload));
   watch('./src/fonts/**').on('all', series(fonts, sync.reload));
 }
 
-export const build = series(clear, html, css, js, fonts, images);
-export const serve = series(clear, html, css, js, fonts, images, server);
+export const build = series(clear, html, css, js, fonts, images, sprite);
+export const serve = series(clear, html, css, js, fonts, images, sprite, server);
 export default serve;

@@ -1,0 +1,23 @@
+footer.section.talk
+  .container 
+    .row 
+      .offset-md-1.col-md-5.form
+        +text-block(
+          'мы всегда рады общению', 
+          'Оставьте свои контакты. Менеджер перезвонит в удобное вам время и ответит на все вопросы.'
+        )
+        input(type="text" placeholder='Ваше имя' name='name')
+        input(type="text" placeholder='Введите телефон' name='phone')
+        .form-group
+          select(name="time")
+            option(value='any') Удобное время
+            option(value='9-12') 9:00 - 12:00
+            option(value='12-18') 12:00 - 18:00
+          input#pers-data(type="checkbox", name="accept-personal-data")
+          label(for="pers-data") Согласие на обработку персональных данных
+        button.button(type="submit") Оставить заявку
+      .offset-md-1.col-md-5
+        +image(
+          '../../images/footer-card-placeholder.jpg', 
+          'cart-placeholder'
+        )

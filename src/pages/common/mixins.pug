@@ -8,17 +8,27 @@ mixin text-block(heading, ...text)
 
 mixin product-card-content(imgSrc, imgAlt, name, price) 
   .product-card__image
-    img(src=imgSrc, alt=imgAlt) 
+    +image(imgSrc, imgAlt)
   p.product-card__name= name
   p.product-card__price= price
   p.product-card__note *стоимость варьируется в зависимости от размера изделия
   button.product-card__order Заказать
 
-mixin product-card(imgSrc, imgAlt, name, price, orientation='vertical')
+mixin product-card(imgSrc, imgAlt, name, price, orientation)
   - if (orientation === 'horisontal')
     .product-card.product-card--horisontal 
       +product-card-content(imgSrc, imgAlt, name, price)
-  - else
-    .product-card
+  - else if (orientation === 'vertical')
+    .product-card.product-card--vertical 
       +product-card-content(imgSrc, imgAlt, name, price)
+
+mixin svg(name)
+  svg.img
+    use.xlink(href='./images/sprite/stack/sprite.svg#' + name)
+
+mixin image(src, alt)
+  .image-wrapper 
+    img.image-wrapper__image(src= src, alt= alt)
+
+
       
