@@ -43,8 +43,8 @@ export const html = () => {
       '$1./images/sprite/stack/sprite.svg$2'
     ))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
-    .pipe(htmlValidator.analyzer())
-    .pipe(htmlValidator.reporter())
+    // .pipe(htmlValidator.analyzer())
+    // .pipe(htmlValidator.reporter())
     .pipe(dest('./build'));
 }
 
@@ -94,7 +94,7 @@ export const sprite = () => {
 }
 
 export const fonts = () => {
-  return src('./src/fonts/**')
+  return src('./src/fonts/**/*')
     .pipe(plumber())
     .pipe(dest('./build/fonts'));
 }

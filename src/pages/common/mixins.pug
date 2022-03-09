@@ -9,10 +9,11 @@ mixin text-block(heading, ...text)
 mixin product-card-content(imgSrc, imgAlt, name, price) 
   .product-card__image
     +image(imgSrc, imgAlt)
-  p.product-card__name= name
-  p.product-card__price= price
-  p.product-card__note *стоимость варьируется в зависимости от размера изделия
-  button.product-card__order Заказать
+  .product-card__content
+    p.product-card__name= name
+    p.product-card__price= price
+    p.product-card__note *стоимость варьируется в зависимости от размера изделия
+    button.product-card__order Заказать
 
 mixin product-card(imgSrc, imgAlt, name, price, orientation)
   - if (orientation === 'horisontal')
@@ -23,7 +24,7 @@ mixin product-card(imgSrc, imgAlt, name, price, orientation)
       +product-card-content(imgSrc, imgAlt, name, price)
 
 mixin svg(name)
-  svg.img
+  svg
     use.xlink(href='./images/sprite/stack/sprite.svg#' + name)
 
 mixin image(src, alt)
