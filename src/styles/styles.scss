@@ -265,8 +265,8 @@ svg.img {
     position: relative;
     &::after {
       @include bg-before(81, 8);
-      background-image: url(../images/sprite/stack/sprite.svg#catalog-order-arrow);
-      right: 100%;
+      background: url(../images/sprite/catalog-order-arrow.svg);
+      right: -100%;
       background-color: red;
     }
   }
