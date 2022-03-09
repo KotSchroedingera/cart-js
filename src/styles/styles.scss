@@ -1,273 +1,35 @@
-// common 
-html {
-  font-family: $font-text;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.section {
-  &--light {
-    background-color: $bg-color-light;
-    color: $text-color-dark;
-  }
-  &--dark {
-    background-color: $bg-color-dark;
-    color: $text-color-light;
-  }
-}
-
-svg.img {
-  max-width: 100%;
-}
-
-.image-wrapper {
-  &__image {
-    display: block;
-    max-width: 100%;
-  }
-}
-
-.text-block {
-  &__heading {
-    font-size: 46px;
-    line-height: 64px;
-    font-style: normal;
-    font-weight: normal;
-    text-transform: uppercase;
-    font-family: $font-heading;
-    margin-bottom: 60px;
-  }
-  &__text {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 32px;
-  }
-}
-
-.button {
-  background-color: transparent;
-  color: #A78587;
-  text-transform: uppercase;
-  height: 52px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-top: 1px solid #A78587;
-  border-bottom: 1px solid #A78587;
-  outline: none;
-  border-left: none;
-  border-right: none;
-  cursor: pointer;
-}
-
-.text-highlighted {
-  background: top left url('../images/about-center.jpg');
-  background-size: 100% 100%;
-  font-size: 26px;
-  line-height: 48px;
-  color: #FFFFFF;
-  margin-top: 40px;
-  margin-bottom: 45px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  p {
-    padding: 80px 100px
-  }
-}
-
-// header
 .header {
-  min-height: 96px;
-  background: #F8F6F5;
-  color: $text-color-dark;
-  font-family: $font-text;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
+  height: 96px;
   display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.logo {
+  grid-column: 1 / 5;
+  display: flex;
+  width: 375px;
   align-items: center;
-  &__logo {
-    display: flex;
-    align-items: center;
-    .image-wrapper {
-      margin-right: 12px;
-      img {
-        height: 34px;
-        width: 141px;
-      }
-    }
-  }
-  &__call {
-    position: relative;
-    left: 28px;
-    &::before{
-      @include bg-before(20, 20);
-      @include bg-icon('phone');
-      left: -20px;
-    }
-    button {
-      background-color: transparent;
-      border: none;
-      color: inherit;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-  &__address {
-    position: relative;
-    left: 28px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    p {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    &::before{
-      @include bg-before(20, 20);
-      @include bg-icon('geo');
-      left: -20px;
-    }
-  }
-  &__menu {
-    width: 36px;
-    height: 32px;
-    @include bg-icon('menu');
-    position: relative;
-    right: 10px;
-    cursor: pointer;
+  justify-content: space-between;
+  &__text {
+    width: 222px;
   }
 }
 
-// slogan
-.slogan {
-  padding-top: 80px;
-  max-height: 520px;
-  background-image: linear-gradient(
-    180deg,
-    rgba(52, 50, 53, 0.9) 88%, 
-    #EEE9E6 88%, 
-     );
-  .text-block{
-    padding-right: 60px;
-    &__heading {
-      margin-top: 0;
-      margin-bottom: 35px;
-      padding-right: 20px;
-      padding-left: 0;
-    }
-    &__text {
-      margin-bottom: 35px;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 32px;
-      opacity: 0.6;
-    }
-  }
-  .button {
-    width: 228px;
-  }
-}
-
-// about 
-.about {
-  padding-top: 80px;
-  padding-bottom: 132px;
-  .container{
-    background: 25px 1em url('../images/heading\ words/about.svg') no-repeat;
-  }
-  &__image {
-    &--aside {
-      margin-top: 170px;
-      p {
-        font-size: 14px;
-        line-height: 24px;
-      }
-    }
-    &--center {
-      margin-top: 85px;
-      position: relative;
-      .note {
-        margin-top: 0;
-        max-width: 573px;
-        font-size: 18px;
-        line-height: 32px;
-      }
-      .aside {
-        font-size: 14px;
-        line-height: 24px;
-        position: absolute;
-        max-width: 256px;
-        margin-top: 0;
-        margin-bottom: 0;
-        right: 10%;
-        bottom: 35%;
-        a {
-          text-decoration-line: underline;
-          color: #9A8584;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-}
-
-// best
-.product-card {
-  background-color: white;
-  margin-bottom: 20px;
+.phone {
+  grid-column: 7 / 9;
   display: flex;
-  &--vertical {
-    flex-direction: column;
-  }
-  &--horisontal {
+  flex-direction: column;
+  justify-content: center;
+}
 
-  }
-  &__content {
-    padding: 36px;
-    padding-bottom: 40px;
-  }
-  &__name {
-    font-family: $font-heading;
-    margin-bottom: 20px;
-    font-size: 32px;
-    line-height: 36px;
-    margin-top: 0;
-  } 
-  &__price {
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 24px;
-    margin-bottom: 20px;
-  }
-  &__note {
-    opacity: 0.6;
-    font-size: 14px;
-    line-height: 20px;
-    margin-bottom: 32px;
-  }
-  &__order {
-    text-transform: uppercase;
-    color: #9A8584;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    position: relative;
-    &::after {
-      @include bg-before(81, 8);
-      background: url(../images/sprite/catalog-order-arrow.svg);
-      right: -100%;
-      background-color: red;
-    }
-  }
+.address {
+  grid-column: 9 / 12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu {
+  grid-column: -1 / -2;
 }
