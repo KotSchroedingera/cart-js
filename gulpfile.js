@@ -62,8 +62,8 @@ export const html = () => {
       '$1./images/sprite/stack/sprite.svg$2'
     ))
     .pipe(typograf({ locale: ['ru', 'en-US'] }))
-    // .pipe(htmlValidator.analyzer())
-    // .pipe(htmlValidator.reporter())
+    .pipe(htmlValidator.analyzer())
+    .pipe(htmlValidator.reporter())
     .pipe(dest('./build'));
 }
 
@@ -101,6 +101,7 @@ export const images = () => {
 export const sprite = () => {
   return src('./src/images/sprite/*.svg')
     .pipe(plumber())
+    .pipe(svgo())
     .pipe(svgSprite( spriteConfig ))
     .pipe(dest('./build/images/sprite'))
 }
