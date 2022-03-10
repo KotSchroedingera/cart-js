@@ -29,19 +29,9 @@ import sync from 'browser-sync';
 sync.create();
 
 const spriteConfig = {
-  shape: {
-    dimension: {
-      maxWidth: 500,
-      maxHeight: 500
-    },
-    spacing: {
-      padding: 0
-    },
-  },
   mode: {
-    stack: {
-      dest : '.',
-      sprite: 'sprite.svg'
+    css: {
+      sprite: './sprite.svg'
     }
   }
 };
@@ -102,7 +92,19 @@ export const sprite = () => {
   return src('./src/images/sprite/*.svg')
     .pipe(plumber())
     .pipe(svgo())
-    .pipe(svgSprite( spriteConfig ))
+    .pipe(svgSprite({
+      mode: {
+        css: {
+          dest: '.',
+          sprite: './sprite.svg', 
+          example: true, 
+          render: {
+            scss: true, 
+            css: true
+          }
+        }
+      }
+    }))
     .pipe(dest('./build/images/sprite'))
 }
 
