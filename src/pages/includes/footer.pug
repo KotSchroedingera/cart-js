@@ -1,0 +1,21 @@
+footer.footer
+  .container.container--footer
+    .footer__heading
+      h2.heading мы всегда рады общению
+    .footer__text
+      p.text.text--opaque Оставьте свои контакты. Менеджер перезвонит в удобное вам время и ответит на все вопросы.
+    .footer__form
+      input.input.input--name(placeholder="Ваше имя")
+      input.input.input--phone(placeholder="Введите телефон") 
+      .form-row
+        select.select--time(name="time")
+          option(value="any") Неважно
+          option(value="9-12") 9:00 - 12:00
+          option(value="12-18") 12:00 - 18:00
+          option(value="18-21") 18:00 - 21:00
+        input#agree(type="checkbox", name="agree" checked)
+        label(for="agree") Согласие на обработку персональных данных
+      button.button(type="submit") Оставить заявку
+    .footer__map
+      .map
+        img(src="../../images/footer-map-placeholder.jpg", alt="map")

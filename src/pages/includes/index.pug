@@ -1,13 +1,136 @@
-header.header
-  .container
-    .logo
-      img(src="../../images/abojur.svg", alt="abojur-logo", 
-        width="141" height="51")
-      p.logo__text Студия дизайнерского текстиля в Санкт-Петербурге
-    .phone
-      a(href="tel:") +7 (981) 857-46-24
-      button заказать звонок
-    .address Санкт-Петербург, набережная реки Карповки, дом 5, литер П 
-    .menu
-      img(src="../../images/sprite/stack/sprite.svg#menu", alt="menu", 
-        )
+main
+  section.slogan
+    .container
+      .slogan__text-content
+        h2.heading создадим эмоцию вашего интерьера
+        .text.text--opaque 
+          p Интерьерный текстиль по индивидуальным размерам с доставкой на дом 
+        button.button.button--slogan ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+      img.slogan__image(src="../../images/header-image.jpg", alt="slogan-image")
+  
+  section.about
+    .container.container--about
+      .about__heading
+        h2.heading О КОМПАНИИ
+      .about__first-text
+        .text
+          p Дорогие друзья! От имени команды Artendo textile studio, приветствую Вас на нашем сайте.
+          p Премиальный европейский текстиль – одно из самых главных направлений работы коллектива. Создавать неповторимые интерьеры для наших дорогих клиентов, уделяя внимание мельчайшим деталям – вот то,  что по-настоящему вдохновляет дизайнеров нашей студии.
+          p Наш коллектив сделает все, чтобы после сотрудничества с нами,  Вам было приятно сказать: « Да! Это именно то, что действительно достойно моего дома!»
+      .about__first-side
+        img(src="../../images/about-1.jpg", alt="about-1")
+        p Недавно мы писали статью о тканях, которые используем в работе, и источниках вдохновения.
+      .about__highlighted
+        p Понимание тенденций рынка и особенностей менталитета наших клиентов приводит нас к созданию ценной концепции. Все проекты, которые мы делаем, созданы для людей. И это наш приоритет.
+      .about__second-text 
+        .text 
+          p Мы предлагаем только лучшее и нам важно, чтобы все идеально сочеталось, будь то классический или современный интерьер. Самые последние коллекции, созданные европейскими дизайнерами  – мастерами своего дела из лучших тканей,  всегда на нашем складе.
+      .about__second-image
+        img(src="../../images/about-2.jpg", alt="about-2")
+        .text
+          p Мы не хотим просто делать текстиль. Мы хотим его создать. Мы хотим, чтобы он  был  исключительным  и отличался, сохраняя качество на максимальном уровне.
+      .about__second-side
+        p Подушки Elixir №3 и Elixir №21 из зимней коллекции 2020 года
+
+  section.best
+    .container.container--best
+      .best__heading
+        h2.heading ДЛЯ ВАС ТОЛЬКО САМОЕ ЛУЧШЕЕ
+      +product(
+        '../../images/products/casa-nova.jpg', 
+        'casa-nova', 
+        'Подушки Casa Nova',
+        '16 000',
+        'vertical'
+      )
+      +product(
+        '../../images/products/shanti.jpg', 
+        'shanti', 
+        'Покрывало ШАНТИ ',
+        '13 660',
+        'vertical'
+      )
+      +product(
+        '../../images/products/elixir7.jpg', 
+        'elixir-7', 
+        'Подушки Elixir №7',
+        '15 000',
+        'vertical'
+      )
+      +product(
+        '../../images/products/basic.jpg', 
+        'basic', 
+        'Подушки Basic',
+        '11 000',
+        'horisontal'
+      )
+      +product(
+        '../../images/products/vintage.jpg', 
+        'vintage', 
+        'Подушки Vintage',
+        '17 000',
+        'horisontal'
+      )
+  section.projects
+    .container.container--projects
+      .projects__heading
+        h2.heading НАМ ЕСТЬ, ЧЕМ ГОРДИТЬСЯ!
+      .projects__slider
+        .slider
+          .slider__arrow--left
+          .slider__slide
+            img(src="../../images/projects/project-1.jpg", alt="project")
+            .slide-info
+              h3 Oформление коттеджа 
+              a(href="#") подробнее  
+          .slider__arrow--right
+  section.mission
+    .container.container--mission
+      .mission__video
+        img(src="../../images/mission-video-preview.jpg", alt="video")
+      .mission__heading
+        h2.heading НАША МИССИЯ И ВИДЕНИЕ
+      .mission__text
+        .text
+          p Мы не хотим просто делать текстиль. Мы хотим, чтобы он  был  исключительным  и отличался, сохраняя качество на максимальном уровне.
+          p Продукты ABOJUR гарантируют вам оригинальный дизайн с превосходной отделкой ткани и изумительными элементами декора, которые сделают ваш интерьер уникальным.
+      .mission__image-small
+        img(src="../../images/mission-small.jpg", alt="mission")
+      .mission__image-big
+        img(src="../../images/mission-big.jpg", alt="mission")
+  section.team 
+    .container.container--team
+      .team__heading
+        h2.heading НАША творческая КОМАНДА
+      .team__text
+        .text
+          p Мы - студия текстиля и дизайна, которая хочет стать частью большой истории. Будь то уютный стул, цветочное растение или стена, которую нужно разрушить, чтобы расширить комнату, все это одинаково важно для нас.
+          p Работая по всей России, мы заботимся о том, как ваше пространство выглядит, чувствует и говорит. Все проекты созданы для людей. И это наш приоритет.
+      .team__side
+        p Мы разработали проекты различного масштаба и имеем большой опыт работы во всех регионах. 
+      .team__image
+        img(src="../../images/team.jpg", alt="team")
+  section.collections
+    .container.container--collections
+      .collections__heading
+        h2.heading Метаморфозы
+      .collections__text  
+        .text
+          p В нашем ассортименте представлено 258 коллекций, новые поставки происходят регулярно так как мы следим за трендами, актуальными новинками и посещаем международные выставки.
+      .collections__gallery--top-big
+        img(src="../../images/collections/top-left.jpg", alt="")
+      .collections__gallery--top-small-1
+        img(src="../../images/collections/top-right-1.jpg", alt="")
+      .collections__gallery--top-small-2
+        img(src="../../images/collections/top-right-2.jpg", alt="")
+      .collections__gallery--bottom-small-1
+        img(src="../../images/collections/bottom-left-1.jpg", alt="")
+      .collections__gallery--bottom-small-2 
+        img(src="../../images/collections/bottom-left-2.jpg", alt="")
+      .collections__gallery--bottom-big
+        img(src="../../images/collections/bottom-right.jpg", alt="")
+
+        
+
+
+

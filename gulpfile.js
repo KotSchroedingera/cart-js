@@ -18,8 +18,8 @@ import terser from 'gulp-terser';
 import babel from 'gulp-babel';
 
 import imagemin from 'gulp-imagemin';
-import svgSprite from 'gulp-svg-sprite';
 import svgo from 'gulp-svgo';
+import svgSprite from 'gulp-svg-sprite';
 
 import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
@@ -27,6 +27,25 @@ import plumber from 'gulp-plumber';
 import del from 'del';
 import sync from 'browser-sync';
 sync.create();
+
+const spriteConfig = {
+  shape: {
+    dimension: {
+      maxWidth: 500,
+      maxHeight: 500
+    },
+    spacing: {
+      padding: 0
+    },
+  },
+  mode: {
+    stack: {
+      dest : '.',
+      sprite: 'sprite.svg'
+    }
+  }
+};
+
 
 export const html = () => {
   return src('./src/pages/**.pug')
@@ -82,14 +101,7 @@ export const images = () => {
 export const sprite = () => {
   return src('./src/images/sprite/*.svg')
     .pipe(plumber())
-    .pipe(svgo())
-    .pipe(svgSprite({
-      mode: {
-        stack: {
-          sprite: 'sprite.svg'
-        }
-      }
-    }))
+    .pipe(svgSprite( spriteConfig ))
     .pipe(dest('./build/images/sprite'))
 }
 
