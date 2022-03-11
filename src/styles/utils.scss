@@ -1,0 +1,14 @@
+@mixin bg-image($w, $h, $bg-pos-1, $bg-pos-2) {
+  position: absolute;
+  display: block;
+  content: '';
+  width: #{$w}px;
+  height: #{$h}px;
+  background: url("../images/sprite/sprite-ebf77cf3.svg") $bg-pos-1 $bg-pos-2 no-repeat;
+}
+
+@mixin bg-heading($name) {
+  background-image: url('../images/words/#{$name}.svg') no-repeat;
+  padding-left: 99px;
+  padding-top: 20px;
+}

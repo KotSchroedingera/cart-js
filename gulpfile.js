@@ -28,14 +28,6 @@ import del from 'del';
 import sync from 'browser-sync';
 sync.create();
 
-const spriteConfig = {
-  mode: {
-    css: {
-      sprite: './sprite.svg'
-    }
-  }
-};
-
 
 export const html = () => {
   return src('./src/pages/**.pug')
@@ -100,7 +92,6 @@ export const sprite = () => {
           example: true, 
           render: {
             scss: true, 
-            css: true
           }
         }
       }

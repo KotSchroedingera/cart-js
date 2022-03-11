@@ -8,16 +8,20 @@
   src: url(../fonts/Old_Standard_TT/);
 }
 
+//////////////////
+
 html {
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   line-height: 32px;
   font-style: normal;
   font-weight: 500;
+  color: #695A59;
+  background-color: #EEE9E6;
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Old_Standard', sans-serif;
+  font-family: 'Old_Standard';
 }
 
 img {
@@ -27,6 +31,10 @@ img {
 
 p, h2 {
   margin: 0;
+}
+
+p {
+  margin-bottom: 20px;
 }
 
 a {
