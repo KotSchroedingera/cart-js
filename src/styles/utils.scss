@@ -7,8 +7,20 @@
   background: url("../images/sprite/sprite-ebf77cf3.svg") $bg-pos-1 $bg-pos-2 no-repeat;
 }
 
-@mixin bg-heading($name) {
+@mixin bg-heading-line($name) {
   background-image: url('../images/words/#{$name}.svg') no-repeat;
   padding-left: 99px;
   padding-top: 20px;
+}
+
+@mixin bg-heading-2-lines($name) {
+  background-image: url('../images/words/#{$name}.svg') no-repeat;
+  padding-left: 99px;
+  padding-top: 20px;
+  padding-top: 0;
+  .heading {
+    margin-top: -5px;
+    max-width: 400px;
+    line-height: 54px;
+  }
 }

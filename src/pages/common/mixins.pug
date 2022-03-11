@@ -1,10 +1,10 @@
 mixin product-content(imgSrc, imgAlt, name, price)
   .product-card__image
-    img.image--responsive(src= imgSrc, alt= imgAlt)
+    img(src= imgSrc, alt= imgAlt)
   .product-card__description
     h3.product-card__heading= name
     p.product-card__price от #{price} ₽
-    p.product-card__note *стоимость варьируется в зависимости от размера изделия
+    p.product-card__note.text--opaque *стоимость варьируется в зависимости от размера изделия
     button.product-card__order заказать
 
 mixin product(imgSrc, imgAlt, name, price, orientation)

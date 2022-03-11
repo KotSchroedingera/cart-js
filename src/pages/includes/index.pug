@@ -36,6 +36,7 @@ main
     .container.container--best
       .best__heading
         h2.heading ДЛЯ ВАС ТОЛЬКО САМОЕ ЛУЧШЕЕ
+      .best__catalog
       +product(
         '../../images/products/casa-nova.jpg', 
         'casa-nova', 
@@ -77,13 +78,13 @@ main
         h2.heading НАМ ЕСТЬ, ЧЕМ ГОРДИТЬСЯ!
       .projects__slider
         .slider
-          .slider__arrow--left
+          .slider__arrow.slider__arrow--left
           .slider__slide
             img(src="../../images/projects/project-1.jpg", alt="project")
-            .slide-info
+            .info
               h3 Oформление коттеджа 
               a(href="#") подробнее  
-          .slider__arrow--right
+          .slider__arrow.slider__arrow--right
   section.mission
     .container.container--mission
       .mission__video

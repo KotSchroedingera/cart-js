@@ -104,8 +104,10 @@
     grid-column: 1 / -1;
     grid-row: 1 / 2;
   }
+  &__catalog {
+    grid-column: 1 / -1;
+  }
   .product-card {
-    display: flex;
     &--vertical {
       grid-column-start: span 4;
     }
