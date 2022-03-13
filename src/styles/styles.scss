@@ -1,3 +1,19 @@
+.section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  &--dark {
+    background-color: #343235;
+    .heading, 
+    .side {
+      color: #EEE9E6;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .text {
+      color: #FBF3F0;
+    }
+  }
+}
+
 .header {
   height: 96px;
   display: flex;
@@ -75,6 +91,12 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 32px;
+  p {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
   &--opaque {
     opacity: 0.6;
   }
@@ -102,8 +124,10 @@
   background: url(../images/dark-bg.jpg) no-repeat;
   background-size: 100% 88%;
   padding-top: 80px;
+  padding-bottom: 0;
   .heading {
     margin-bottom: 36px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   .text {
     margin-bottom: 36px;
@@ -115,7 +139,6 @@
 
 .about {
   padding-top: 80px;
-  padding-bottom: 60px;
   &__heading {
     @include bg-heading-line('about');
   }
@@ -161,8 +184,6 @@
 }
 
 .best {
-  padding-top: 60px;
-  padding-bottom: 60px;
   &__heading {
     @include bg-heading-2-lines('best');
   }
@@ -214,10 +235,9 @@
 }
 
 .projects {
-  padding-top: 60px;
   padding-bottom: 120px;
   &__heading {
-    @include bg-heading-2-lines('projects')
+    @include bg-heading-2-lines('projects');
   }
   &__slider {
     margin-top: 44px;
@@ -251,6 +271,12 @@
         font-size: 12px;
         text-transform: uppercase;
         margin-right: 84px;
+        position: relative;
+        &::after {
+          @include bg-image(33, 8, 58.8235294117647%, 11.764705882352942%);
+          top: 12px;
+          right: -45px;
+        }
       }
     }
   }
@@ -269,5 +295,12 @@
     &--left::after {
       transform: rotate(180deg);
     }
+  }
+}
+
+.mission {
+  padding-top: 120px;
+  &__heading {
+    @include bg-heading-2-lines('mission');
   }
 }
