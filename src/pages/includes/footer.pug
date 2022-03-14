@@ -1,14 +1,16 @@
-footer.footer
+footer.section--dark.footer
   .container.container--footer
     .footer__heading
       h2.heading мы всегда рады общению
     .footer__text
       p.text.text--opaque Оставьте свои контакты. Менеджер перезвонит в удобное вам время и ответит на все вопросы.
-    .footer__form
-      input.input.input--name(placeholder="Ваше имя")
-      input.input.input--phone(placeholder="Введите телефон") 
-      .form-row
-        select.select--time(name="time")
+    .form.footer__form
+      .form__input-wrapper
+        input.form__input(placeholder="Ваше имя")
+      .form__input-wrapper
+        input.form__input(placeholder="Введите телефон") 
+      .form__row
+        select.form__select(name="time")
           option(value="any") Неважно
           option(value="9-12") 9:00 - 12:00
           option(value="12-18") 12:00 - 18:00

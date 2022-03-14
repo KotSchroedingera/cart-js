@@ -300,7 +300,89 @@
 
 .mission {
   padding-top: 120px;
+  padding-bottom: 72px;
+  background-image: url(../images/mission-bg.jpg) 0 87% #343235 repeat-x;
   &__heading {
-    @include bg-heading-2-lines('mission');
+    @include bg-heading-2-lines('mission');  
   }
 }
+
+.team {
+  padding-bottom: 120px;
+  &__heading {
+    @include bg-heading-2-lines('team');  
+    .heading {
+      max-width: 460px;
+    }
+  }
+  &__side {
+    font-size: 14px;
+    line-height: 24px;
+    color: #FBF3F0;
+    margin-top: 26px;
+  }
+  &__text {
+    margin-bottom: 20px;
+    margin-top: 26px;
+  }
+}
+
+.collections {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  &__heading {
+    @include bg-heading-line('collections');
+  }
+  &__text {
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+.footer {
+  background-image: url(../images/dark-bg.jpg) ;
+  &__heading {
+    @include bg-heading-2-lines('talk'); 
+    margin-bottom: 25px;
+  }
+  .text {
+    color: #EEE9E6;
+    margin-bottom: 24px;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+}
+
+.form {
+  &__row {
+    margin-top: 44px;
+    margin-bottom: 60px;
+  }
+  &__input {
+    height: 50px;
+    width: 100%;
+    color: #F6EDE9;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #A78587;
+    margin-bottom: 20px;
+    &-wrapper {
+      position: relative;      
+      &::after {
+        @include bg-image(6, 6, 100%, 28.571428571428573%);
+        bottom: 23px;
+        right: -9px;
+      }
+    }
+    &::placeholder {
+      color: #F6EDE9;
+    }
+  }
+  &__select {
+    
+  }
+}
+

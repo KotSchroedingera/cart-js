@@ -4,13 +4,14 @@
   content: '';
   width: #{$w}px;
   height: #{$h}px;
-  background: url("../images/sprite/sprite-ebf77cf3.svg") $bg-pos-1 $bg-pos-2 no-repeat;
+  background: url("../images/sprite/sprite-e8215176.svg") $bg-pos-1 $bg-pos-2 no-repeat;
 }
 
 @mixin bg-heading-line($name) {
   background-image: url('../images/words/#{$name}.svg') no-repeat;
   padding-left: 99px;
   padding-top: 20px;
+  width: 100%;
 }
 
 @mixin bg-heading-2-lines($name) {
@@ -18,6 +19,7 @@
   padding-left: 99px;
   padding-top: 20px;
   padding-top: 0;
+  width: 100%;
   .heading {
     margin-top: -5px;
     max-width: 400px;
