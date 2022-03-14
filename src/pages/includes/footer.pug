@@ -10,13 +10,18 @@ footer.section--dark.footer
       .form__input-wrapper
         input.form__input(placeholder="Введите телефон") 
       .form__row
-        select.form__select(name="time")
-          option(value="any") Неважно
-          option(value="9-12") 9:00 - 12:00
-          option(value="12-18") 12:00 - 18:00
-          option(value="18-21") 18:00 - 21:00
-        input#agree(type="checkbox", name="agree" checked)
-        label(for="agree") Согласие на обработку персональных данных
+        .form__select
+          .select__name
+            p Удобное время
+          .select__list
+            ul(name="time") 
+              li(value="any") Любое время
+              li(value="9-12") 9:00 - 12:00
+              li(value="12-18") 12:00 - 18:00
+              li(value="18-21") 18:00 - 21:00
+        .form__checkbox
+          input#agree(type="checkbox", name="agree" checked)
+          label(for="agree") Согласие на обработку персональных данных
       button.button(type="submit") Оставить заявку
     .footer__map
       .map
