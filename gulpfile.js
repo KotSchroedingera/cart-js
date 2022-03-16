@@ -16,6 +16,7 @@ import stripCssComments from 'gulp-strip-css-comments';
 
 import terser from 'gulp-terser';
 import babel from 'gulp-babel';
+import webpack from 'webpack-stream';
 
 import imagemin from 'gulp-imagemin';
 import svgo from 'gulp-svgo';
@@ -64,9 +65,31 @@ export const css = () => {
 }
 
 export const js = () => {
-  return src('./src/scripts/**.js')
+  return src('./src/scripts/**.*')
     .pipe(plumber())
     .pipe(sourcemaps.init())
+    .pipe(webpack({
+      output: {
+        filename: 'index.js',
+      },
+      mode: 'production',
+      module: {
+        rules: [
+          {
+            test: /\.s[ac]ss$/i,
+            use: [
+              // Creates `style` nodes from JS strings
+              "style-loader",
+              // Translates CSS into CommonJS
+              "css-loader",
+              // Compiles Sass to CSS
+              "sass-loader",
+            ],
+          },
+        ],
+      },
+    
+    }))
     .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(terser())
     .pipe(sourcemaps.write('./maps'))

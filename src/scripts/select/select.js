@@ -1,3 +1,5 @@
+import './styles.scss';
+
 class Select {
   constructor(elem) {
     this.elem = elem;
