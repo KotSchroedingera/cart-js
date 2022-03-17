@@ -1,11 +1,11 @@
 .select-js {
   cursor: pointer;
   position: relative;
+  color: white;
   &__name {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    color: white;
     border: 1px solid #A78587;
     height: 50px;
     i {
@@ -37,7 +37,9 @@
 
 .select-js.active {
   .select-js__name {
-    
+    i {
+      transform: rotate(180deg);
+    }
   }
   .select-js__list {
     display: flex;
