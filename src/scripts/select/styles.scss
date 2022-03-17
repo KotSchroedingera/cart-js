@@ -1,0 +1,46 @@
+.select-js {
+  cursor: pointer;
+  position: relative;
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    border: 1px solid #A78587;
+    height: 50px;
+    i {
+      color: #A78587;
+      font-size: 16px;
+    }
+  }
+  &__list {
+    display: none;
+    border: 1px solid #A78587;
+    background-color: #312F32;
+    top: 98%;
+    width: 99%;
+    position: absolute;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      li {
+        padding-left: 15px;
+        &:hover {
+          background-color: grey;
+        }
+      }
+    }
+  }
+}
+
+.select-js.active {
+  .select-js__name {
+    
+  }
+  .select-js__list {
+    display: flex;
+  }
+}
+

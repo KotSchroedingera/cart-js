@@ -11,14 +11,7 @@ footer.section--dark.footer
         input.form__input(placeholder="Введите телефон") 
       .form__row
         .form__select
-          .select__name
-            p Удобное время
-          .select__list
-            ul(data-name="time") 
-              li(data-value="any") Любое время
-              li(data-value="9-12") 9:00 - 12:00
-              li(data-value="12-18") 12:00 - 18:00
-              li(data-value="18-21") 18:00 - 21:00
+          //- include Select.js
         .form__checkbox
           input#agree(type="checkbox", name="agree" checked)
           label(for="agree") Согласие на обработку персональных данных
