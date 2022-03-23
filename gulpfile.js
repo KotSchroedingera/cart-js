@@ -106,14 +106,14 @@ export const sprite = () => {
     .pipe(svgo())
     .pipe(svgSprite({
       mode: {
-        css: {
-          dest: '.',
-          sprite: './sprite.svg', 
-          example: true, 
+        view: {
+          bust: false,
           render: {
             scss: true, 
+            dest: '.',
+            sprite: './sprite.svg', 
           }
-        }
+        },
       }
     }))
     .pipe(dest('./build/images/sprite'))

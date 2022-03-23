@@ -4,7 +4,7 @@
   content: '';
   width: #{$w}px;
   height: #{$h}px;
-  background: url("../images/sprite/sprite-e8215176.svg") $bg-pos-1 $bg-pos-2 no-repeat;
+  background: url("../images/sprite/view/svg/sprite.view.svg") $bg-pos-1 $bg-pos-2 no-repeat;
 }
 
 @mixin bg-heading-line($name) {
