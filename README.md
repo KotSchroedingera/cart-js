@@ -1,4 +1,4 @@
-# Layout projects
+# Single Page - Landing
 
 Core technologies: HTML, CSS, JavaScript. 
 
