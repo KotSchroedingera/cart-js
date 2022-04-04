@@ -6,6 +6,3 @@ Core technologies: HTML, CSS, JavaScript.
 - HTML: Pug. 
 - CSS: Sass. 
 - Workflow: Gulp, Webpack.
-
-App: 
-
