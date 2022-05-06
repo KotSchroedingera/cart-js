@@ -1,6 +1,6 @@
 # Вёрстка лэндинга (1 экран)
 
-https://shop-landing.vercel.app/
+https://shop-landing.vercel.app/<br>
 Сборка при помощи Gulp и Webpack.
 
 Использованы:
