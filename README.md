@@ -1,8 +1,11 @@
-# Single Page - Landing
+# Вёрстка лэндинга (1 экран)
 
-Core technologies: HTML, CSS, JavaScript. 
+Сборка при помощи Gulp и Webpack.
 
-## Report table app
-- HTML: Pug. 
-- CSS: Sass. 
-- Workflow: Gulp, Webpack.
+Использованы:
+- html-валидатор;
+- live reload;
+- другие плагины. 
+
+Стек:
+- Pug, Sass.
